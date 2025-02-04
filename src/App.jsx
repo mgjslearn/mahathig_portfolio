@@ -3,21 +3,30 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import { Home, About, Projects, Arts, Contact } from './pages';
 
-import Navbar  from './components/Navbar';
+import {Navbar}  from './components';
 const App = () => {
     return ( 
         <main className="bg-slate-300/20">
             <Router>
                 <Navbar />
                 <Routes>
-                      <Route path="/mahathig_portfolio" element= {<Home />} />
-                    <Route path="/mahathig_portfolio/about" element= {<About />} />
-                    <Route path="/mahathig_portfolio/projects" element= {<Projects />} />
-                    <Route path="/mahathig_portfolio/contact" element= {<Contact />} />
-                    <Route path="/mahathig_portfolio/arts" element= {<Arts />} />
+                  <Route path='/' element={<Home />} />
+                  <Route
+                    path='/*'
+                    element={
+                      <>
+                        <Routes>
+                          <Route path='/about' element={<About />} />
+                          <Route path='/projects' element={<Projects />} />
+                          <Route path='/contact' element={<Contact />} />
+                        </Routes>
+                        <Footer />
+                      </>
+                    }
+                  />
                 </Routes>
-            </Router>
-        </main>
-    )
-}
+              </Router>
+            </main>
+          );
+        };
 export default App;
