@@ -11,7 +11,7 @@ const App = () => {
             <Router basename="/mahathig_portfolio">
                 <Navbar />
                 <Routes>
-                  <Route path='/' element={<Home />} />
+                  <Route path='/home' element={<Home />} />
                   <Route
                     path='/*'
                     element={
